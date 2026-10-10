@@ -1,0 +1,1489 @@
+{
+  "name": "ReUse - Assistente virtual",
+  "description": "Assistente do ReUse: executa tarefas (pausar ofertas, cadastrar item...) e orienta o uso da plataforma.",
+  "language": "pt-br",
+  "metadata": {
+    "api_version": {
+      "major_version": "v1",
+      "minor_version": "2018-09-20"
+    }
+  },
+  "intents": [
+    {
+      "intent": "greeting",
+      "description": "smalltalk: greeting",
+      "examples": [
+        {
+          "text": "oi"
+        },
+        {
+          "text": "olá"
+        },
+        {
+          "text": "bom dia"
+        },
+        {
+          "text": "boa tarde"
+        },
+        {
+          "text": "boa noite"
+        },
+        {
+          "text": "e aí"
+        },
+        {
+          "text": "opa tudo bem"
+        },
+        {
+          "text": "olá assistente"
+        },
+        {
+          "text": "hey"
+        }
+      ]
+    },
+    {
+      "intent": "goodbye",
+      "description": "smalltalk: goodbye",
+      "examples": [
+        {
+          "text": "tchau"
+        },
+        {
+          "text": "até logo"
+        },
+        {
+          "text": "até mais"
+        },
+        {
+          "text": "flw"
+        },
+        {
+          "text": "valeu tchau"
+        },
+        {
+          "text": "encerrar conversa"
+        },
+        {
+          "text": "preciso ir"
+        }
+      ]
+    },
+    {
+      "intent": "thanks",
+      "description": "smalltalk: thanks",
+      "examples": [
+        {
+          "text": "obrigado"
+        },
+        {
+          "text": "obrigada"
+        },
+        {
+          "text": "valeu"
+        },
+        {
+          "text": "muito obrigado"
+        },
+        {
+          "text": "agradeço a ajuda"
+        },
+        {
+          "text": "brigadão"
+        },
+        {
+          "text": "ajudou muito"
+        }
+      ]
+    },
+    {
+      "intent": "help_menu",
+      "description": "help: help_menu",
+      "examples": [
+        {
+          "text": "ajuda"
+        },
+        {
+          "text": "o que você faz"
+        },
+        {
+          "text": "o que você sabe fazer"
+        },
+        {
+          "text": "quais são suas funções"
+        },
+        {
+          "text": "me ajuda"
+        },
+        {
+          "text": "menu de opções"
+        },
+        {
+          "text": "como você pode me ajudar"
+        },
+        {
+          "text": "preciso de ajuda"
+        }
+      ]
+    },
+    {
+      "intent": "list_offers",
+      "description": "task: list_offers",
+      "examples": [
+        {
+          "text": "quais são minhas ofertas"
+        },
+        {
+          "text": "listar minhas ofertas"
+        },
+        {
+          "text": "mostrar meus anúncios"
+        },
+        {
+          "text": "ver meus itens publicados"
+        },
+        {
+          "text": "o que eu publiquei"
+        },
+        {
+          "text": "quais itens eu tenho ativos"
+        },
+        {
+          "text": "minhas ofertas"
+        }
+      ]
+    },
+    {
+      "intent": "pause_offers",
+      "description": "task: pause_offers",
+      "examples": [
+        {
+          "text": "quero pausar minhas ofertas ativas"
+        },
+        {
+          "text": "pausar minhas ofertas"
+        },
+        {
+          "text": "pausar todos os anúncios"
+        },
+        {
+          "text": "suspender meus anúncios"
+        },
+        {
+          "text": "desativar minhas ofertas"
+        },
+        {
+          "text": "ocultar meus itens"
+        },
+        {
+          "text": "pausa o anúncio do sofá"
+        },
+        {
+          "text": "não quero mais receber propostas por enquanto"
+        }
+      ]
+    },
+    {
+      "intent": "resume_offers",
+      "description": "task: resume_offers",
+      "examples": [
+        {
+          "text": "quero reativar minhas ofertas"
+        },
+        {
+          "text": "retomar minhas ofertas pausadas"
+        },
+        {
+          "text": "reativar todos os anúncios"
+        },
+        {
+          "text": "voltar a exibir meus itens"
+        },
+        {
+          "text": "despausar meus anúncios"
+        },
+        {
+          "text": "ativar minhas ofertas de novo"
+        },
+        {
+          "text": "reativa o anúncio da bicicleta"
+        }
+      ]
+    },
+    {
+      "intent": "delete_offer",
+      "description": "task: delete_offer",
+      "examples": [
+        {
+          "text": "quero excluir um anúncio"
+        },
+        {
+          "text": "apagar meu anúncio do sofá"
+        },
+        {
+          "text": "remover uma oferta"
+        },
+        {
+          "text": "deletar um item que publiquei"
+        },
+        {
+          "text": "excluir a oferta da bicicleta"
+        },
+        {
+          "text": "tirar meu item do ar"
+        },
+        {
+          "text": "apagar anúncio"
+        }
+      ]
+    },
+    {
+      "intent": "publish_item",
+      "description": "task: publish_item",
+      "examples": [
+        {
+          "text": "quero cadastrar um item agora"
+        },
+        {
+          "text": "cadastre um item para mim"
+        },
+        {
+          "text": "publicar um item com você"
+        },
+        {
+          "text": "me ajuda a anunciar um produto"
+        },
+        {
+          "text": "criar um anúncio pelo chat"
+        },
+        {
+          "text": "quero doar um item agora"
+        },
+        {
+          "text": "vamos cadastrar um item"
+        },
+        {
+          "text": "cadastrar um item"
+        }
+      ]
+    },
+    {
+      "intent": "show_favorites",
+      "description": "task: show_favorites",
+      "examples": [
+        {
+          "text": "mostrar meus favoritos"
+        },
+        {
+          "text": "quais itens eu favoritei"
+        },
+        {
+          "text": "abrir favoritos"
+        },
+        {
+          "text": "ver itens salvos"
+        },
+        {
+          "text": "meus favoritos"
+        },
+        {
+          "text": "quero ver o que salvei"
+        }
+      ]
+    },
+    {
+      "intent": "my_progress",
+      "description": "task: my_progress",
+      "examples": [
+        {
+          "text": "qual é meu nível"
+        },
+        {
+          "text": "quantos pontos eu tenho"
+        },
+        {
+          "text": "meu progresso"
+        },
+        {
+          "text": "ver minhas conquistas"
+        },
+        {
+          "text": "quanto xp eu tenho"
+        },
+        {
+          "text": "qual minha sequência de dias"
+        },
+        {
+          "text": "como estou no ranking"
+        }
+      ]
+    },
+    {
+      "intent": "update_city",
+      "description": "task: update_city",
+      "examples": [
+        {
+          "text": "mudar minha cidade para Campinas"
+        },
+        {
+          "text": "alterar minha cidade"
+        },
+        {
+          "text": "atualizar cidade do perfil"
+        },
+        {
+          "text": "agora moro em Santos"
+        },
+        {
+          "text": "trocar minha localização"
+        },
+        {
+          "text": "mudei de cidade"
+        }
+      ]
+    },
+    {
+      "intent": "notifications_off",
+      "description": "task: notifications_off",
+      "examples": [
+        {
+          "text": "desativar as notificações"
+        },
+        {
+          "text": "desligar notificações"
+        },
+        {
+          "text": "quero silenciar o app"
+        },
+        {
+          "text": "parar de receber notificações"
+        },
+        {
+          "text": "não quero mais notificações"
+        },
+        {
+          "text": "tira as notificações push"
+        }
+      ]
+    },
+    {
+      "intent": "notifications_on",
+      "description": "task: notifications_on",
+      "examples": [
+        {
+          "text": "ativar as notificações"
+        },
+        {
+          "text": "ligar notificações"
+        },
+        {
+          "text": "quero receber notificações"
+        },
+        {
+          "text": "habilitar notificações push"
+        },
+        {
+          "text": "voltar a receber avisos"
+        }
+      ]
+    },
+    {
+      "intent": "go_profile",
+      "description": "task: go_profile",
+      "examples": [
+        {
+          "text": "abrir meu perfil"
+        },
+        {
+          "text": "ir para o perfil"
+        },
+        {
+          "text": "me leva ao perfil"
+        },
+        {
+          "text": "quero ver meu perfil"
+        },
+        {
+          "text": "meu perfil"
+        }
+      ]
+    },
+    {
+      "intent": "go_settings",
+      "description": "task: go_settings",
+      "examples": [
+        {
+          "text": "abrir configurações"
+        },
+        {
+          "text": "ir para ajustes"
+        },
+        {
+          "text": "quero mudar as preferências"
+        },
+        {
+          "text": "me leva às configurações"
+        },
+        {
+          "text": "configurações do app"
+        }
+      ]
+    },
+    {
+      "intent": "help_publish",
+      "description": "help: help_publish",
+      "examples": [
+        {
+          "text": "como cadastrar um novo item"
+        },
+        {
+          "text": "como publico um anúncio"
+        },
+        {
+          "text": "como anunciar um produto"
+        },
+        {
+          "text": "onde cadastro um item para troca"
+        },
+        {
+          "text": "quero colocar algo à venda, como faço"
+        },
+        {
+          "text": "passo a passo para publicar"
+        },
+        {
+          "text": "como adicionar um item"
+        }
+      ]
+    },
+    {
+      "intent": "help_trade",
+      "description": "help: help_trade",
+      "examples": [
+        {
+          "text": "como funciona a troca"
+        },
+        {
+          "text": "como fazer uma troca"
+        },
+        {
+          "text": "quero trocar um item"
+        },
+        {
+          "text": "como cadastrar um item para troca"
+        },
+        {
+          "text": "como negociar uma troca"
+        },
+        {
+          "text": "o que é troca no reuse"
+        },
+        {
+          "text": "como trocar meu notebook"
+        }
+      ]
+    },
+    {
+      "intent": "help_donate",
+      "description": "help: help_donate",
+      "examples": [
+        {
+          "text": "como doar um item"
+        },
+        {
+          "text": "como funciona a doação"
+        },
+        {
+          "text": "quero doar uma coisa"
+        },
+        {
+          "text": "como receber uma doação"
+        },
+        {
+          "text": "onde marco como doação"
+        },
+        {
+          "text": "doar roupas como faço"
+        }
+      ]
+    },
+    {
+      "intent": "help_contact",
+      "description": "help: help_contact",
+      "examples": [
+        {
+          "text": "como falo com o vendedor"
+        },
+        {
+          "text": "como entrar em contato com o anunciante"
+        },
+        {
+          "text": "como mandar mensagem"
+        },
+        {
+          "text": "quero negociar um item"
+        },
+        {
+          "text": "como converso com quem anunciou"
+        },
+        {
+          "text": "onde ficam minhas conversas"
+        }
+      ]
+    },
+    {
+      "intent": "help_favorites",
+      "description": "help: help_favorites",
+      "examples": [
+        {
+          "text": "como favoritar um item"
+        },
+        {
+          "text": "como salvo um item para depois"
+        },
+        {
+          "text": "onde vejo meus favoritos"
+        },
+        {
+          "text": "como guardar um anúncio"
+        },
+        {
+          "text": "como funciona o coração"
+        },
+        {
+          "text": "como remover dos favoritos"
+        }
+      ]
+    },
+    {
+      "intent": "help_points",
+      "description": "help: help_points",
+      "examples": [
+        {
+          "text": "como ganhar pontos"
+        },
+        {
+          "text": "o que são pontos rp"
+        },
+        {
+          "text": "como subir de nível"
+        },
+        {
+          "text": "como funcionam as conquistas"
+        },
+        {
+          "text": "como ganho badges"
+        },
+        {
+          "text": "para que servem os pontos"
+        },
+        {
+          "text": "como funciona a gamificação"
+        }
+      ]
+    },
+    {
+      "intent": "help_safety",
+      "description": "help: help_safety",
+      "examples": [
+        {
+          "text": "dicas de segurança"
+        },
+        {
+          "text": "como negociar com segurança"
+        },
+        {
+          "text": "como evitar golpes"
+        },
+        {
+          "text": "é seguro encontrar o vendedor"
+        },
+        {
+          "text": "onde combinar a entrega"
+        },
+        {
+          "text": "como saber se o anunciante é confiável"
+        }
+      ]
+    },
+    {
+      "intent": "help_edit_profile",
+      "description": "help: help_edit_profile",
+      "examples": [
+        {
+          "text": "como edito meu perfil"
+        },
+        {
+          "text": "como mudar minha foto"
+        },
+        {
+          "text": "como alterar meu nome"
+        },
+        {
+          "text": "como colocar uma bio"
+        },
+        {
+          "text": "onde altero meus dados"
+        },
+        {
+          "text": "como atualizar meu perfil"
+        }
+      ]
+    },
+    {
+      "intent": "help_about",
+      "description": "help: help_about",
+      "examples": [
+        {
+          "text": "o que é o reuse"
+        },
+        {
+          "text": "para que serve o app"
+        },
+        {
+          "text": "como funciona o reuse"
+        },
+        {
+          "text": "qual o objetivo da plataforma"
+        },
+        {
+          "text": "me explica o reuse"
+        },
+        {
+          "text": "sobre o projeto"
+        }
+      ]
+    }
+  ],
+  "entities": [],
+  "counterexamples": [],
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Boas-vindas",
+      "dialog_node": "welcome",
+      "conditions": "welcome",
+      "output": {
+        "generic": [
+          {
+            "response_type": "text",
+            "selection_policy": "sequential",
+            "values": [
+              {
+                "text": "Olá! Eu sou o Reuso, assistente virtual do ReUse 🌿\n\nPosso executar tarefas por você (pausar ofertas, cadastrar itens, mudar configurações) e explicar como usar o app. O que você precisa?"
+              }
+            ]
+          },
+          {
+            "response_type": "option",
+            "title": "Posso ajudar com:",
+            "preference": "button",
+            "options": [
+              {
+                "label": "Pausar minhas ofertas",
+                "value": {
+                  "input": {
+                    "text": "Pausar minhas ofertas"
+                  }
+                }
+              },
+              {
+                "label": "Cadastrar um item",
+                "value": {
+                  "input": {
+                    "text": "Cadastrar um item"
+                  }
+                }
+              },
+              {
+                "label": "Como funciona a troca?",
+                "value": {
+                  "input": {
+                    "text": "Como funciona a troca?"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "standard",
+      "title": "greeting",
+      "dialog_node": "node_greeting",
+      "conditions": "#greeting",
+      "output": {
+        "generic": [
+          {
+            "response_type": "text",
+            "selection_policy": "sequential",
+            "values": [
+              {
+                "text": "Oi! 😊 Em que posso ajudar hoje?"
+              }
+            ]
+          },
+          {
+            "response_type": "option",
+            "title": "Posso ajudar com:",
+            "preference": "button",
+            "options": [
+              {
+                "label": "Como cadastrar um item?",
+                "value": {
+                  "input": {
+                    "text": "Como cadastrar um item?"
+                  }
+                }
+              },
+              {
+                "label": "Pausar minhas ofertas",
+                "value": {
+                  "input": {
+                    "text": "Pausar minhas ofertas"
+                  }
+                }
+              },
+              {
+                "label": "Minhas ofertas",
+                "value": {
+                  "input": {
+                    "text": "Minhas ofertas"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "previous_sibling": "welcome"
+    },
+    {
+      "type": "standard",
+      "title": "goodbye",
+      "dialog_node": "node_goodbye",
+      "conditions": "#goodbye",
+      "output": {
+        "generic": [
+          {
+            "response_type": "text",
+            "selection_policy": "sequential",
+            "values": [
+              {
+                "text": "Até logo! Qualquer dúvida é só chamar. Bons reusos! ♻️"
+              }
+            ]
+          }
+        ]
+      },
+      "previous_sibling": "node_greeting"
+    },
+    {
+      "type": "standard",
+      "title": "thanks",
+      "dialog_node": "node_thanks",
+      "conditions": "#thanks",
+      "output": {
+        "generic": [
+          {
+            "response_type": "text",
+            "selection_policy": "sequential",
+            "values": [
+              {
+                "text": "Por nada! Fico feliz em ajudar 💚 Precisa de mais alguma coisa?"
+              }
+            ]
+          }
+        ]
+      },
+      "previous_sibling": "node_goodbye"
+    },
+    {
+      "type": "standard",
+      "title": "help_menu",
+      "dialog_node": "node_help_menu",
+      "conditions": "#help_menu",
+      "output": {
+        "generic": [
+          {
+            "response_type": "text",
+            "selection_policy": "sequential",
+            "values": [
+              {
+                "text": "Aqui está o que eu sei fazer:\n\n⚙️ TAREFAS\n• Pausar ou reativar suas ofertas\n• Listar suas ofertas\n• Cadastrar um item conversando comigo\n• Excluir uma oferta\n• Ver seus favoritos e seu progresso\n• Alterar sua cidade e as notificações\n\n📖 DÚVIDAS\n• Como cadastrar, trocar, doar, entrar em contato, ganhar pontos e negociar com segurança"
+              }
+            ]
+          },
+          {
+            "response_type": "option",
+            "title": "Posso ajudar com:",
+            "preference": "button",
+            "options": [
+              {
+                "label": "Pausar minhas ofertas",
+                "value": {
+                  "input": {
+                    "text": "Pausar minhas ofertas"
+                  }
+                }
+              },
+              {
+                "label": "Cadastrar um item",
+                "value": {
+                  "input": {
+                    "text": "Cadastrar um item"
+                  }
+                }
+              },
+              {
+                "label": "Como funciona a troca?",
+                "value": {
+                  "input": {
+                    "text": "Como funciona a troca?"
+                  }
+                }
+              },
+              {
+                "label": "Meu progresso",
+                "value": {
+                  "input": {
+                    "text": "Meu progresso"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "previous_sibling": "node_thanks"
+    },
+    {
+      "type": "standard",
+      "title": "list_offers",
+      "dialog_node": "node_list_offers",
+      "conditions": "#list_offers",
+      "output": {
+        "generic": [
+          {
+            "response_type": "text",
+            "selection_policy": "sequential",
+            "values": [
+              {
+                "text": "Claro! Vou buscar suas ofertas agora..."
+              }
+            ]
+          }
+        ],
+        "user_defined": {
+          "action": "list_offers"
+        }
+      },
+      "previous_sibling": "node_help_menu"
+    },
+    {
+      "type": "standard",
+      "title": "pause_offers",
+      "dialog_node": "node_pause_offers",
+      "conditions": "#pause_offers",
+      "output": {
+        "generic": [
+          {
+            "response_type": "text",
+            "selection_policy": "sequential",
+            "values": [
+              {
+                "text": "Pode deixar! Vou pausar suas ofertas agora..."
+              }
+            ]
+          }
+        ],
+        "user_defined": {
+          "action": "pause_offers"
+        }
+      },
+      "previous_sibling": "node_list_offers"
+    },
+    {
+      "type": "standard",
+      "title": "resume_offers",
+      "dialog_node": "node_resume_offers",
+      "conditions": "#resume_offers",
+      "output": {
+        "generic": [
+          {
+            "response_type": "text",
+            "selection_policy": "sequential",
+            "values": [
+              {
+                "text": "Certo! Vou reativar suas ofertas agora..."
+              }
+            ]
+          }
+        ],
+        "user_defined": {
+          "action": "resume_offers"
+        }
+      },
+      "previous_sibling": "node_pause_offers"
+    },
+    {
+      "type": "standard",
+      "title": "delete_offer",
+      "dialog_node": "node_delete_offer",
+      "conditions": "#delete_offer",
+      "output": {
+        "generic": [
+          {
+            "response_type": "text",
+            "selection_policy": "sequential",
+            "values": [
+              {
+                "text": "Entendi, vamos remover uma oferta."
+              }
+            ]
+          }
+        ],
+        "user_defined": {
+          "action": "delete_offer"
+        }
+      },
+      "previous_sibling": "node_resume_offers"
+    },
+    {
+      "type": "standard",
+      "title": "publish_item",
+      "dialog_node": "node_publish_item",
+      "conditions": "#publish_item",
+      "output": {
+        "generic": [
+          {
+            "response_type": "text",
+            "selection_policy": "sequential",
+            "values": [
+              {
+                "text": "Vamos nessa! 📦 Vou te fazer algumas perguntas rápidas para publicar seu item."
+              }
+            ]
+          }
+        ],
+        "user_defined": {
+          "action": "publish_item"
+        }
+      },
+      "previous_sibling": "node_delete_offer"
+    },
+    {
+      "type": "standard",
+      "title": "show_favorites",
+      "dialog_node": "node_show_favorites",
+      "conditions": "#show_favorites",
+      "output": {
+        "generic": [
+          {
+            "response_type": "text",
+            "selection_policy": "sequential",
+            "values": [
+              {
+                "text": "Já abro seus favoritos! ❤️"
+              }
+            ]
+          }
+        ],
+        "user_defined": {
+          "action": "show_favorites"
+        }
+      },
+      "previous_sibling": "node_publish_item"
+    },
+    {
+      "type": "standard",
+      "title": "my_progress",
+      "dialog_node": "node_my_progress",
+      "conditions": "#my_progress",
+      "output": {
+        "generic": [
+          {
+            "response_type": "text",
+            "selection_policy": "sequential",
+            "values": [
+              {
+                "text": "Vou conferir seu progresso..."
+              }
+            ]
+          }
+        ],
+        "user_defined": {
+          "action": "my_progress"
+        }
+      },
+      "previous_sibling": "node_show_favorites"
+    },
+    {
+      "type": "standard",
+      "title": "update_city",
+      "dialog_node": "node_update_city",
+      "conditions": "#update_city",
+      "output": {
+        "generic": [
+          {
+            "response_type": "text",
+            "selection_policy": "sequential",
+            "values": [
+              {
+                "text": "Certo, vou atualizar sua cidade."
+              }
+            ]
+          }
+        ],
+        "user_defined": {
+          "action": "update_city"
+        }
+      },
+      "previous_sibling": "node_my_progress"
+    },
+    {
+      "type": "standard",
+      "title": "notifications_off",
+      "dialog_node": "node_notifications_off",
+      "conditions": "#notifications_off",
+      "output": {
+        "generic": [
+          {
+            "response_type": "text",
+            "selection_policy": "sequential",
+            "values": [
+              {
+                "text": "Ok! Vou desativar as notificações push."
+              }
+            ]
+          }
+        ],
+        "user_defined": {
+          "action": "notifications_off"
+        }
+      },
+      "previous_sibling": "node_update_city"
+    },
+    {
+      "type": "standard",
+      "title": "notifications_on",
+      "dialog_node": "node_notifications_on",
+      "conditions": "#notifications_on",
+      "output": {
+        "generic": [
+          {
+            "response_type": "text",
+            "selection_policy": "sequential",
+            "values": [
+              {
+                "text": "Combinado! Vou ativar as notificações push."
+              }
+            ]
+          }
+        ],
+        "user_defined": {
+          "action": "notifications_on"
+        }
+      },
+      "previous_sibling": "node_notifications_off"
+    },
+    {
+      "type": "standard",
+      "title": "go_profile",
+      "dialog_node": "node_go_profile",
+      "conditions": "#go_profile",
+      "output": {
+        "generic": [
+          {
+            "response_type": "text",
+            "selection_policy": "sequential",
+            "values": [
+              {
+                "text": "Abrindo seu perfil! 👤"
+              }
+            ]
+          }
+        ],
+        "user_defined": {
+          "action": "go_profile"
+        }
+      },
+      "previous_sibling": "node_notifications_on"
+    },
+    {
+      "type": "standard",
+      "title": "go_settings",
+      "dialog_node": "node_go_settings",
+      "conditions": "#go_settings",
+      "output": {
+        "generic": [
+          {
+            "response_type": "text",
+            "selection_policy": "sequential",
+            "values": [
+              {
+                "text": "Abrindo as configurações! ⚙️"
+              }
+            ]
+          }
+        ],
+        "user_defined": {
+          "action": "go_settings"
+        }
+      },
+      "previous_sibling": "node_go_profile"
+    },
+    {
+      "type": "standard",
+      "title": "help_publish",
+      "dialog_node": "node_help_publish",
+      "conditions": "#help_publish",
+      "output": {
+        "generic": [
+          {
+            "response_type": "text",
+            "selection_policy": "sequential",
+            "values": [
+              {
+                "text": "Para cadastrar um item é simples 📦\n\n1️⃣ Toque no botão verde \"+\" no centro da barra inferior.\n2️⃣ Adicione uma foto (câmera ou galeria).\n3️⃣ Preencha título e descrição.\n4️⃣ Escolha a categoria e o estado de conservação.\n5️⃣ Defina o tipo: doação, venda ou troca (na venda, informe o preço).\n6️⃣ Informe a cidade e toque em \"Publicar agora\".\n\nSe preferir, eu cadastro com você pelo chat!"
+              }
+            ]
+          },
+          {
+            "response_type": "option",
+            "title": "Posso ajudar com:",
+            "preference": "button",
+            "options": [
+              {
+                "label": "Cadastrar um item agora",
+                "value": {
+                  "input": {
+                    "text": "Cadastrar um item agora"
+                  }
+                }
+              },
+              {
+                "label": "Como funciona a troca?",
+                "value": {
+                  "input": {
+                    "text": "Como funciona a troca?"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "previous_sibling": "node_go_settings"
+    },
+    {
+      "type": "standard",
+      "title": "help_trade",
+      "dialog_node": "node_help_trade",
+      "conditions": "#help_trade",
+      "output": {
+        "generic": [
+          {
+            "response_type": "text",
+            "selection_policy": "sequential",
+            "values": [
+              {
+                "text": "Como funciona a troca 🔄\n\n1️⃣ Ao publicar, escolha o tipo \"troca\" e descreva o que você aceitaria receber.\n2️⃣ Interessados enviam mensagem pela aba Mensagens.\n3️⃣ Combinem o que cada um oferece e o local do encontro.\n4️⃣ Prefira locais públicos e movimentados.\n5️⃣ Concluída a troca, vocês ganham pontos RP!"
+              }
+            ]
+          },
+          {
+            "response_type": "option",
+            "title": "Posso ajudar com:",
+            "preference": "button",
+            "options": [
+              {
+                "label": "Dicas de segurança",
+                "value": {
+                  "input": {
+                    "text": "Dicas de segurança"
+                  }
+                }
+              },
+              {
+                "label": "Como ganhar pontos?",
+                "value": {
+                  "input": {
+                    "text": "Como ganhar pontos?"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "previous_sibling": "node_help_publish"
+    },
+    {
+      "type": "standard",
+      "title": "help_donate",
+      "dialog_node": "node_help_donate",
+      "conditions": "#help_donate",
+      "output": {
+        "generic": [
+          {
+            "response_type": "text",
+            "selection_policy": "sequential",
+            "values": [
+              {
+                "text": "Como doar 💚\n\n1️⃣ Toque no \"+\" e preencha os dados do item.\n2️⃣ Em \"tipo\", selecione \"doação\" — o preço fica grátis.\n3️⃣ Quem quiser receber toca em \"Quero receber\" e conversa com você.\n4️⃣ Combine a retirada e conclua a doação.\n\nDoações são o que mais rende pontos RP na plataforma! 🌱"
+              }
+            ]
+          },
+          {
+            "response_type": "option",
+            "title": "Posso ajudar com:",
+            "preference": "button",
+            "options": [
+              {
+                "label": "Como ganhar pontos?",
+                "value": {
+                  "input": {
+                    "text": "Como ganhar pontos?"
+                  }
+                }
+              },
+              {
+                "label": "Cadastrar um item agora",
+                "value": {
+                  "input": {
+                    "text": "Cadastrar um item agora"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "previous_sibling": "node_help_trade"
+    },
+    {
+      "type": "standard",
+      "title": "help_contact",
+      "dialog_node": "node_help_contact",
+      "conditions": "#help_contact",
+      "output": {
+        "generic": [
+          {
+            "response_type": "text",
+            "selection_policy": "sequential",
+            "values": [
+              {
+                "text": "Para falar com o anunciante 💬\n\n1️⃣ No Marketplace, toque no item que te interessou.\n2️⃣ Na tela do item, toque em \"Falar com vendedor\" (ou \"Quero receber\" nas doações).\n3️⃣ A conversa abre na hora e fica salva na aba Mensagens.\n\nDica: pergunte sobre estado, medidas e local de retirada antes de combinar."
+              }
+            ]
+          },
+          {
+            "response_type": "option",
+            "title": "Posso ajudar com:",
+            "preference": "button",
+            "options": [
+              {
+                "label": "Dicas de segurança",
+                "value": {
+                  "input": {
+                    "text": "Dicas de segurança"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "previous_sibling": "node_help_donate"
+    },
+    {
+      "type": "standard",
+      "title": "help_favorites",
+      "dialog_node": "node_help_favorites",
+      "conditions": "#help_favorites",
+      "output": {
+        "generic": [
+          {
+            "response_type": "text",
+            "selection_policy": "sequential",
+            "values": [
+              {
+                "text": "Para favoritar ❤️\n\n1️⃣ Abra o item que você curtiu.\n2️⃣ Toque no coração 🤍 no topo da tela — ele fica vermelho.\n3️⃣ Seus favoritos ficam em Perfil → Favoritos.\n\nPara remover, toque no coração de novo."
+              }
+            ]
+          },
+          {
+            "response_type": "option",
+            "title": "Posso ajudar com:",
+            "preference": "button",
+            "options": [
+              {
+                "label": "Abrir favoritos",
+                "value": {
+                  "input": {
+                    "text": "Abrir favoritos"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "previous_sibling": "node_help_contact"
+    },
+    {
+      "type": "standard",
+      "title": "help_points",
+      "dialog_node": "node_help_points",
+      "conditions": "#help_points",
+      "output": {
+        "generic": [
+          {
+            "response_type": "text",
+            "selection_policy": "sequential",
+            "values": [
+              {
+                "text": "Pontos ReUse (RP) 🏆\n\n• Login diário: +10 RP\n• Cadastrar item: +50 RP\n• Completar o perfil: +80 RP\n• Avaliação 5★: +100 RP\n• Convidar amigo: +150 RP\n• Concluir troca: +200 RP\n• Concluir doação: +300 RP\n\nOs pontos sobem seu nível: 🌱 Semente → 🪴 Broto → 🌿 Muda → 🌳 Árvore → 🌲 Floresta. Veja tudo em Perfil → Conquistas."
+              }
+            ]
+          },
+          {
+            "response_type": "option",
+            "title": "Posso ajudar com:",
+            "preference": "button",
+            "options": [
+              {
+                "label": "Meu progresso",
+                "value": {
+                  "input": {
+                    "text": "Meu progresso"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "previous_sibling": "node_help_favorites"
+    },
+    {
+      "type": "standard",
+      "title": "help_safety",
+      "dialog_node": "node_help_safety",
+      "conditions": "#help_safety",
+      "output": {
+        "generic": [
+          {
+            "response_type": "text",
+            "selection_policy": "sequential",
+            "values": [
+              {
+                "text": "Dicas de segurança 🛡️\n\n• Combine encontros em locais públicos e movimentados, de dia.\n• Confira o item antes de pagar ou trocar.\n• Evite pagar adiantado ou passar dados bancários/códigos por mensagem.\n• Mantenha a conversa dentro do app.\n• Desconfie de ofertas boas demais.\n• Leve alguém com você em encontros para itens grandes."
+              }
+            ]
+          },
+          {
+            "response_type": "option",
+            "title": "Posso ajudar com:",
+            "preference": "button",
+            "options": [
+              {
+                "label": "Como funciona a troca?",
+                "value": {
+                  "input": {
+                    "text": "Como funciona a troca?"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "previous_sibling": "node_help_points"
+    },
+    {
+      "type": "standard",
+      "title": "help_edit_profile",
+      "dialog_node": "node_help_edit_profile",
+      "conditions": "#help_edit_profile",
+      "output": {
+        "generic": [
+          {
+            "response_type": "text",
+            "selection_policy": "sequential",
+            "values": [
+              {
+                "text": "Para editar seu perfil ✏️\n\n1️⃣ Abra a aba Perfil.\n2️⃣ Toque em \"Editar perfil\".\n3️⃣ Altere foto, nome, bio e cidade.\n4️⃣ Salve as alterações.\n\nPerfil completo rende +80 RP!"
+              }
+            ]
+          },
+          {
+            "response_type": "option",
+            "title": "Posso ajudar com:",
+            "preference": "button",
+            "options": [
+              {
+                "label": "Abrir meu perfil",
+                "value": {
+                  "input": {
+                    "text": "Abrir meu perfil"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "previous_sibling": "node_help_safety"
+    },
+    {
+      "type": "standard",
+      "title": "help_about",
+      "dialog_node": "node_help_about",
+      "conditions": "#help_about",
+      "output": {
+        "generic": [
+          {
+            "response_type": "text",
+            "selection_policy": "sequential",
+            "values": [
+              {
+                "text": "O ReUse é uma plataforma de economia circular ♻️. Você doa, vende ou troca itens que não usa mais e encontra o que precisa — gastando menos, gerando menos lixo e ainda ganhando pontos pelo impacto positivo."
+              }
+            ]
+          }
+        ]
+      },
+      "previous_sibling": "node_help_edit_profile"
+    },
+    {
+      "type": "standard",
+      "title": "Em outros casos",
+      "dialog_node": "anything_else",
+      "conditions": "anything_else",
+      "output": {
+        "generic": [
+          {
+            "response_type": "text",
+            "selection_policy": "sequential",
+            "values": [
+              {
+                "text": "Hmm, não entendi muito bem 🤔. Você pode me pedir algo como \"pausar minhas ofertas\" ou perguntar \"como cadastrar um item?\"."
+              }
+            ]
+          }
+        ]
+      },
+      "previous_sibling": "node_help_about"
+    }
+  ],
+  "webhooks": [],
+  "system_settings": {
+    "disambiguation": {
+      "enabled": false
+    }
+  },
+  "learning_opt_out": true
+}

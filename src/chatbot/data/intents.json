@@ -1,0 +1,203 @@
+{
+  "welcome": "Olá! Eu sou o Reuso, assistente virtual do ReUse 🌿\n\nPosso executar tarefas por você (pausar ofertas, cadastrar itens, mudar configurações) e explicar como usar o app. O que você precisa?",
+  "fallback": "Hmm, não entendi muito bem 🤔. Você pode me pedir algo como \"pausar minhas ofertas\" ou perguntar \"como cadastrar um item?\".",
+  "intents": [
+    {
+      "name": "greeting",
+      "kind": "smalltalk",
+      "keywords": ["oi", "ola", "bom dia", "boa tarde", "boa noite", "eae", "opa"],
+      "examples": ["oi", "olá", "bom dia", "boa tarde", "boa noite", "e aí", "opa tudo bem", "olá assistente", "hey"],
+      "answer": "Oi! 😊 Em que posso ajudar hoje?",
+      "quickReplies": ["Como cadastrar um item?", "Pausar minhas ofertas", "Minhas ofertas"]
+    },
+    {
+      "name": "goodbye",
+      "kind": "smalltalk",
+      "keywords": ["tchau", "ate logo", "flw", "ate mais"],
+      "examples": ["tchau", "até logo", "até mais", "flw", "valeu tchau", "encerrar conversa", "preciso ir"],
+      "answer": "Até logo! Qualquer dúvida é só chamar. Bons reusos! ♻️"
+    },
+    {
+      "name": "thanks",
+      "kind": "smalltalk",
+      "keywords": ["obrigado", "obrigada", "valeu", "brigado", "agradeco"],
+      "examples": ["obrigado", "obrigada", "valeu", "muito obrigado", "agradeço a ajuda", "brigadão", "ajudou muito"],
+      "answer": "Por nada! Fico feliz em ajudar 💚 Precisa de mais alguma coisa?"
+    },
+    {
+      "name": "help_menu",
+      "kind": "help",
+      "keywords": ["ajuda", "menu", "funcoes", "opcoes", "consegue", "ajudar"],
+      "examples": ["ajuda", "o que você faz", "o que você sabe fazer", "quais são suas funções", "me ajuda", "menu de opções", "como você pode me ajudar", "preciso de ajuda"],
+      "answer": "Aqui está o que eu sei fazer:\n\n⚙️ TAREFAS\n• Pausar ou reativar suas ofertas\n• Listar suas ofertas\n• Cadastrar um item conversando comigo\n• Excluir uma oferta\n• Ver seus favoritos e seu progresso\n• Alterar sua cidade e as notificações\n\n📖 DÚVIDAS\n• Como cadastrar, trocar, doar, entrar em contato, ganhar pontos e negociar com segurança",
+      "quickReplies": ["Pausar minhas ofertas", "Cadastrar um item", "Como funciona a troca?", "Meu progresso"]
+    },
+    {
+      "name": "list_offers",
+      "kind": "task",
+      "action": "list_offers",
+      "keywords": ["listar", "mostrar", "quais", "meus anuncios"],
+      "examples": ["quais são minhas ofertas", "listar minhas ofertas", "mostrar meus anúncios", "ver meus itens publicados", "o que eu publiquei", "quais itens eu tenho ativos", "minhas ofertas"],
+      "answer": "Claro! Vou buscar suas ofertas agora..."
+    },
+    {
+      "name": "pause_offers",
+      "kind": "task",
+      "action": "pause_offers",
+      "keywords": ["pausar", "pause", "suspender", "desativar", "esconder", "ocultar"],
+      "examples": ["quero pausar minhas ofertas ativas", "pausar minhas ofertas", "pausar todos os anúncios", "suspender meus anúncios", "desativar minhas ofertas", "ocultar meus itens", "pausa o anúncio do sofá", "não quero mais receber propostas por enquanto"],
+      "answer": "Pode deixar! Vou pausar suas ofertas agora..."
+    },
+    {
+      "name": "resume_offers",
+      "kind": "task",
+      "action": "resume_offers",
+      "keywords": ["reativar", "retomar", "voltar", "reabrir", "ativar", "despausar"],
+      "examples": ["quero reativar minhas ofertas", "retomar minhas ofertas pausadas", "reativar todos os anúncios", "voltar a exibir meus itens", "despausar meus anúncios", "ativar minhas ofertas de novo", "reativa o anúncio da bicicleta"],
+      "answer": "Certo! Vou reativar suas ofertas agora..."
+    },
+    {
+      "name": "delete_offer",
+      "kind": "task",
+      "action": "delete_offer",
+      "keywords": ["excluir", "apagar", "remover", "deletar", "cancelar anuncio"],
+      "examples": ["quero excluir um anúncio", "apagar meu anúncio do sofá", "remover uma oferta", "deletar um item que publiquei", "excluir a oferta da bicicleta", "tirar meu item do ar", "apagar anúncio"],
+      "answer": "Entendi, vamos remover uma oferta."
+    },
+    {
+      "name": "publish_item",
+      "kind": "task",
+      "action": "publish_item",
+      "keywords": ["cadastrar agora", "publicar agora", "cadastre", "publique", "anuncie", "criar anuncio"],
+      "examples": ["quero cadastrar um item agora", "cadastre um item para mim", "publicar um item com você", "me ajuda a anunciar um produto", "criar um anúncio pelo chat", "quero doar um item agora", "vamos cadastrar um item", "cadastrar um item"],
+      "answer": "Vamos nessa! 📦 Vou te fazer algumas perguntas rápidas para publicar seu item."
+    },
+    {
+      "name": "show_favorites",
+      "kind": "task",
+      "action": "show_favorites",
+      "keywords": ["favoritos", "salvos", "curtidos"],
+      "examples": ["mostrar meus favoritos", "quais itens eu favoritei", "abrir favoritos", "ver itens salvos", "meus favoritos", "quero ver o que salvei"],
+      "answer": "Já abro seus favoritos! ❤️"
+    },
+    {
+      "name": "my_progress",
+      "kind": "task",
+      "action": "my_progress",
+      "keywords": ["progresso", "nivel", "xp", "pontos", "conquistas", "streak", "sequencia"],
+      "examples": ["qual é meu nível", "quantos pontos eu tenho", "meu progresso", "ver minhas conquistas", "quanto xp eu tenho", "qual minha sequência de dias", "como estou no ranking"],
+      "answer": "Vou conferir seu progresso..."
+    },
+    {
+      "name": "update_city",
+      "kind": "task",
+      "action": "update_city",
+      "keywords": ["cidade", "mudar cidade", "trocar cidade", "mudei"],
+      "examples": ["mudar minha cidade para Campinas", "alterar minha cidade", "atualizar cidade do perfil", "agora moro em Santos", "trocar minha localização", "mudei de cidade"],
+      "answer": "Certo, vou atualizar sua cidade."
+    },
+    {
+      "name": "notifications_off",
+      "kind": "task",
+      "action": "notifications_off",
+      "keywords": ["desligar notificacoes", "desativar notificacoes", "silenciar", "sem notificacoes", "parar notificacoes"],
+      "examples": ["desativar as notificações", "desligar notificações", "quero silenciar o app", "parar de receber notificações", "não quero mais notificações", "tira as notificações push"],
+      "answer": "Ok! Vou desativar as notificações push."
+    },
+    {
+      "name": "notifications_on",
+      "kind": "task",
+      "action": "notifications_on",
+      "keywords": ["ligar notificacoes", "ativar notificacoes", "habilitar notificacoes", "receber notificacoes"],
+      "examples": ["ativar as notificações", "ligar notificações", "quero receber notificações", "habilitar notificações push", "voltar a receber avisos"],
+      "answer": "Combinado! Vou ativar as notificações push."
+    },
+    {
+      "name": "go_profile",
+      "kind": "task",
+      "action": "go_profile",
+      "keywords": ["abrir perfil", "ir para perfil", "meu perfil"],
+      "examples": ["abrir meu perfil", "ir para o perfil", "me leva ao perfil", "quero ver meu perfil", "meu perfil"],
+      "answer": "Abrindo seu perfil! 👤"
+    },
+    {
+      "name": "go_settings",
+      "kind": "task",
+      "action": "go_settings",
+      "keywords": ["configuracoes", "ajustes", "preferencias"],
+      "examples": ["abrir configurações", "ir para ajustes", "quero mudar as preferências", "me leva às configurações", "configurações do app"],
+      "answer": "Abrindo as configurações! ⚙️"
+    },
+    {
+      "name": "help_publish",
+      "kind": "help",
+      "keywords": ["como cadastrar", "como publicar", "como anunciar", "passo a passo"],
+      "examples": ["como cadastrar um novo item", "como publico um anúncio", "como anunciar um produto", "onde cadastro um item para troca", "quero colocar algo à venda, como faço", "passo a passo para publicar", "como adicionar um item"],
+      "answer": "Para cadastrar um item é simples 📦\n\n1️⃣ Toque no botão verde \"+\" no centro da barra inferior.\n2️⃣ Adicione uma foto (câmera ou galeria).\n3️⃣ Preencha título e descrição.\n4️⃣ Escolha a categoria e o estado de conservação.\n5️⃣ Defina o tipo: doação, venda ou troca (na venda, informe o preço).\n6️⃣ Informe a cidade e toque em \"Publicar agora\".\n\nSe preferir, eu cadastro com você pelo chat!",
+      "quickReplies": ["Cadastrar um item agora", "Como funciona a troca?"]
+    },
+    {
+      "name": "help_trade",
+      "kind": "help",
+      "keywords": ["troca", "trocar", "permuta", "escambo"],
+      "examples": ["como funciona a troca", "como fazer uma troca", "quero trocar um item", "como cadastrar um item para troca", "como negociar uma troca", "o que é troca no reuse", "como trocar meu notebook"],
+      "answer": "Como funciona a troca 🔄\n\n1️⃣ Ao publicar, escolha o tipo \"troca\" e descreva o que você aceitaria receber.\n2️⃣ Interessados enviam mensagem pela aba Mensagens.\n3️⃣ Combinem o que cada um oferece e o local do encontro.\n4️⃣ Prefira locais públicos e movimentados.\n5️⃣ Concluída a troca, vocês ganham pontos RP!",
+      "quickReplies": ["Dicas de segurança", "Como ganhar pontos?"]
+    },
+    {
+      "name": "help_donate",
+      "kind": "help",
+      "keywords": ["doar", "doacao", "doar item", "receber doacao"],
+      "examples": ["como doar um item", "como funciona a doação", "quero doar uma coisa", "como receber uma doação", "onde marco como doação", "doar roupas como faço"],
+      "answer": "Como doar 💚\n\n1️⃣ Toque no \"+\" e preencha os dados do item.\n2️⃣ Em \"tipo\", selecione \"doação\" — o preço fica grátis.\n3️⃣ Quem quiser receber toca em \"Quero receber\" e conversa com você.\n4️⃣ Combine a retirada e conclua a doação.\n\nDoações são o que mais rende pontos RP na plataforma! 🌱",
+      "quickReplies": ["Como ganhar pontos?", "Cadastrar um item agora"]
+    },
+    {
+      "name": "help_contact",
+      "kind": "help",
+      "keywords": ["contato", "falar com vendedor", "mensagem", "entrar em contato", "conversar"],
+      "examples": ["como falo com o vendedor", "como entrar em contato com o anunciante", "como mandar mensagem", "quero negociar um item", "como converso com quem anunciou", "onde ficam minhas conversas"],
+      "answer": "Para falar com o anunciante 💬\n\n1️⃣ No Marketplace, toque no item que te interessou.\n2️⃣ Na tela do item, toque em \"Falar com vendedor\" (ou \"Quero receber\" nas doações).\n3️⃣ A conversa abre na hora e fica salva na aba Mensagens.\n\nDica: pergunte sobre estado, medidas e local de retirada antes de combinar.",
+      "quickReplies": ["Dicas de segurança"]
+    },
+    {
+      "name": "help_favorites",
+      "kind": "help",
+      "keywords": ["favoritar", "salvar item", "coracao", "guardar"],
+      "examples": ["como favoritar um item", "como salvo um item para depois", "onde vejo meus favoritos", "como guardar um anúncio", "como funciona o coração", "como remover dos favoritos"],
+      "answer": "Para favoritar ❤️\n\n1️⃣ Abra o item que você curtiu.\n2️⃣ Toque no coração 🤍 no topo da tela — ele fica vermelho.\n3️⃣ Seus favoritos ficam em Perfil → Favoritos.\n\nPara remover, toque no coração de novo.",
+      "quickReplies": ["Abrir favoritos"]
+    },
+    {
+      "name": "help_points",
+      "kind": "help",
+      "keywords": ["rp", "pontos", "gamificacao", "badge", "nivel", "ranking", "conquista"],
+      "examples": ["como ganhar pontos", "o que são pontos rp", "como subir de nível", "como funcionam as conquistas", "como ganho badges", "para que servem os pontos", "como funciona a gamificação"],
+      "answer": "Pontos ReUse (RP) 🏆\n\n• Login diário: +10 RP\n• Cadastrar item: +50 RP\n• Completar o perfil: +80 RP\n• Avaliação 5★: +100 RP\n• Convidar amigo: +150 RP\n• Concluir troca: +200 RP\n• Concluir doação: +300 RP\n\nOs pontos sobem seu nível: 🌱 Semente → 🪴 Broto → 🌿 Muda → 🌳 Árvore → 🌲 Floresta. Veja tudo em Perfil → Conquistas.",
+      "quickReplies": ["Meu progresso"]
+    },
+    {
+      "name": "help_safety",
+      "kind": "help",
+      "keywords": ["seguranca", "golpe", "seguro", "cuidado", "confiavel"],
+      "examples": ["dicas de segurança", "como negociar com segurança", "como evitar golpes", "é seguro encontrar o vendedor", "onde combinar a entrega", "como saber se o anunciante é confiável"],
+      "answer": "Dicas de segurança 🛡️\n\n• Combine encontros em locais públicos e movimentados, de dia.\n• Confira o item antes de pagar ou trocar.\n• Evite pagar adiantado ou passar dados bancários/códigos por mensagem.\n• Mantenha a conversa dentro do app.\n• Desconfie de ofertas boas demais.\n• Leve alguém com você em encontros para itens grandes.",
+      "quickReplies": ["Como funciona a troca?"]
+    },
+    {
+      "name": "help_edit_profile",
+      "kind": "help",
+      "keywords": ["editar perfil", "foto de perfil", "mudar nome", "alterar bio", "perfil"],
+      "examples": ["como edito meu perfil", "como mudar minha foto", "como alterar meu nome", "como colocar uma bio", "onde altero meus dados", "como atualizar meu perfil"],
+      "answer": "Para editar seu perfil ✏️\n\n1️⃣ Abra a aba Perfil.\n2️⃣ Toque em \"Editar perfil\".\n3️⃣ Altere foto, nome, bio e cidade.\n4️⃣ Salve as alterações.\n\nPerfil completo rende +80 RP!",
+      "quickReplies": ["Abrir meu perfil"]
+    },
+    {
+      "name": "help_about",
+      "kind": "help",
+      "keywords": ["o que e reuse", "sobre o reuse", "objetivo", "para que serve"],
+      "examples": ["o que é o reuse", "para que serve o app", "como funciona o reuse", "qual o objetivo da plataforma", "me explica o reuse", "sobre o projeto"],
+      "answer": "O ReUse é uma plataforma de economia circular ♻️. Você doa, vende ou troca itens que não usa mais e encontra o que precisa — gastando menos, gerando menos lixo e ainda ganhando pontos pelo impacto positivo."
+    }
+  ]
+}

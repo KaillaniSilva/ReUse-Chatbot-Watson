@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: reuse-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: reuse
+      POSTGRES_PASSWORD: reuse
+      POSTGRES_DB: reuse
+    ports:
+      - "5432:5432"
+    volumes:
+      - reuse_pgdata:/var/lib/postgresql/data
+
+volumes:
+  reuse_pgdata:

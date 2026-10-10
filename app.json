@@ -1,0 +1,51 @@
+{
+  "expo": {
+    "name": "reUse",
+    "slug": "reUse",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "O ReUse usa a câmera para fotografar itens que você quer publicar ou para atualizar sua foto de perfil.",
+        "NSPhotoLibraryUsageDescription": "O ReUse acessa sua galeria para que você possa selecionar fotos de itens ou do seu perfil.",
+        "NSPhotoLibraryAddUsageDescription": "O ReUse salva fotos na sua galeria."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.READ_MEDIA_IMAGES"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "O ReUse acessa sua galeria para fotos de itens e perfil.",
+          "cameraPermission": "O ReUse usa a câmera para fotografar itens publicados."
+        }
+      ]
+    ]
+  }
+}

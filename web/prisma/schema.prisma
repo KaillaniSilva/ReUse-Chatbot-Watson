@@ -1,0 +1,113 @@
+// Schema do banco de dados da plataforma ReUse! (versão Web)
+// Banco: PostgreSQL | ORM: Prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ItemStatus {
+  DISPONIVEL
+  RESERVADO
+  DOADO
+}
+
+enum ItemTipo {
+  DOACAO
+  TROCA
+}
+
+enum InteresseStatus {
+  PENDENTE
+  ACEITO
+  RECUSADO
+}
+
+// Usuários da plataforma (doadores e interessados)
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  city         String?
+  createdAt    DateTime @default(now())
+
+  items       Item[]      @relation("ItemOwner")
+  favorites   Favorite[]
+  interesses  Interesse[] @relation("InteresseAutor")
+
+  @@map("users")
+}
+
+// Categorias de itens (Roupas, Móveis, Eletrônicos, Livros, etc.)
+model Category {
+  id    String @id @default(cuid())
+  name  String @unique
+  slug  String @unique
+  icon  String @default("♻️")
+
+  items Item[]
+
+  @@map("categories")
+}
+
+// Itens publicados para doação/troca na plataforma
+model Item {
+  id          String     @id @default(cuid())
+  title       String
+  description String
+  condition   String
+  imageUrl    String?
+  tipo        ItemTipo   @default(DOACAO)
+  status      ItemStatus @default(DISPONIVEL)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  ownerId    String
+  owner      User     @relation("ItemOwner", fields: [ownerId], references: [id], onDelete: Cascade)
+
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id])
+
+  favorites  Favorite[]
+  interesses Interesse[]
+
+  @@map("items")
+  @@index([categoryId])
+  @@index([status])
+}
+
+// Itens favoritados/salvos por um usuário
+model Favorite {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  itemId String
+  item   Item   @relation(fields: [itemId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, itemId])
+  @@map("favorites")
+}
+
+// Manifestação de interesse de um usuário em um item de outro usuário
+model Interesse {
+  id        String          @id @default(cuid())
+  mensagem  String
+  status    InteresseStatus @default(PENDENTE)
+  createdAt DateTime        @default(now())
+
+  itemId String
+  item   Item   @relation(fields: [itemId], references: [id], onDelete: Cascade)
+
+  autorId String
+  autor   User   @relation("InteresseAutor", fields: [autorId], references: [id], onDelete: Cascade)
+
+  @@map("interesses")
+}
