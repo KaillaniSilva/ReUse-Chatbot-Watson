@@ -46,3 +46,5 @@ next-env.d.ts
 
 # chaves do assistente IBM (geradas por scripts/generate-assistant-keys.mjs)
 .assistant-keys/
+
+.vercel

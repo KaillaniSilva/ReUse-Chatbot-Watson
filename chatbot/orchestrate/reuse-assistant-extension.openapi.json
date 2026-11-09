@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "description": "Operações que o assistente do ReUse executa em nome do usuário logado. A conta é identificada pelo X-ReUse-Action-Token (payload privado do Web Chat), nunca por um ID digitado no chat."
   },
-  "servers": [{ "url": "https://SEU-PROJETO.vercel.app" }],
+  "servers": [{ "url": "https://reuse-web-ten.vercel.app" }],
   "security": [{ "ExtensionApiKey": [] }],
   "components": {
     "securitySchemes": {
