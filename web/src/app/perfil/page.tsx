@@ -12,6 +12,7 @@ export const metadata = { title: "Meu perfil — ReUse!" };
 const statusLabel = {
   DISPONIVEL: "Disponível",
   RESERVADO: "Reservado",
+  PAUSADO: "Pausado",
   DOADO: "Concluído",
 } as const;
 

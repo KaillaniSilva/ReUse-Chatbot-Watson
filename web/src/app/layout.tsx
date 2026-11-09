@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { WatsonAssistantChat } from "@/components/WatsonAssistantChat";
+import { getSessionUserId } from "@/lib/session";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,7 +22,9 @@ export const metadata: Metadata = {
     "Plataforma que conecta quem quer dar nova vida a itens usados com quem busca qualidade sem comprar novo.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  const userId = await getSessionUserId();
+
   return (
     <html
       lang="pt-BR"
@@ -30,6 +34,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <WatsonAssistantChat key={userId ?? "anon"} />
       </body>
     </html>
   );

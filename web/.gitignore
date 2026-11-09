@@ -43,3 +43,6 @@ yarn-error.log*
 next-env.d.ts
 
 .vercel
+
+# chaves do assistente IBM (geradas por scripts/generate-assistant-keys.mjs)
+.assistant-keys/

@@ -1,0 +1,53 @@
+{
+  "assistant": { "name": "ReUse Assistente", "language": "pt-br" },
+  "session_variables": {
+    "reuse_authenticated": "boolean — enviado pelo site em toda mensagem",
+    "reuse_user_name": "string — primeiro nome do usuário logado",
+    "reuse_token_expires_at": "string ISO — validade do token"
+  },
+  "actions": [
+    {
+      "name": "Consultar meus anúncios",
+      "examples": ["quais são meus anúncios?", "quantos itens tenho?", "mostre meus itens", "meus anúncios", "o que eu publiquei?"],
+      "steps": [
+        { "condition": "reuse_authenticated não é true", "say": "Para ver seus anúncios, faça login no ReUse e abra o chat de novo.", "end": true },
+        { "call": "getMyItemsSummary", "header_X-ReUse-Action-Token": "${system_integrations.chat.private.user_payload}.reuse_action_token" },
+        { "condition": "passo executou com sucesso", "say": "${body.message}" },
+        { "condition": "passo falhou", "say": "Não consegui consultar seus anúncios agora. Entre novamente no site e tente de novo." }
+      ]
+    },
+    {
+      "name": "Pausar meus anúncios",
+      "examples": ["pausar meus anúncios", "quero pausar meus itens", "esconder meus anúncios", "tirar meus itens do catálogo"],
+      "steps": [
+        { "condition": "reuse_authenticated não é true", "say": "Você precisa estar logado no ReUse para pausar anúncios.", "end": true },
+        { "call": "getMyItemsSummary" },
+        { "condition": "body.disponiveis == 0", "say": "Você não tem anúncios disponíveis para pausar.", "end": true },
+        { "ask": "Você tem ${body.disponiveis} anúncio(s) disponível(is). Eles deixarão de aparecer no catálogo. Quer pausar todos agora?", "customer_response": "Confirmação (Sim/Não)" },
+        { "condition": "resposta = Não", "say": "Tudo bem, nada foi alterado.", "end": true },
+        { "call": "pauseMyAvailableItems" },
+        { "say": "${body.message}" }
+      ]
+    },
+    {
+      "name": "Reativar meus anúncios",
+      "examples": ["reativar meus anúncios", "voltar meus itens para o catálogo", "despausar anúncios", "ativar meus itens"],
+      "steps": [
+        { "condition": "reuse_authenticated não é true", "say": "Você precisa estar logado no ReUse para reativar anúncios.", "end": true },
+        { "call": "getMyItemsSummary" },
+        { "condition": "body.pausados == 0", "say": "Você não tem anúncios pausados.", "end": true },
+        { "ask": "Você tem ${body.pausados} anúncio(s) pausado(s). Quer reativar todos?", "customer_response": "Confirmação (Sim/Não)" },
+        { "condition": "resposta = Não", "say": "Ok, seus anúncios continuam pausados.", "end": true },
+        { "call": "reactivateMyPausedItems" },
+        { "say": "${body.message}" }
+      ]
+    },
+    {
+      "name": "Como funciona o ReUse (orientação)",
+      "examples": ["como funciona o ReUse?", "como doar um item?", "como trocar?", "como publicar um anúncio?"],
+      "steps": [
+        { "say": "No ReUse você publica itens para doação ou troca em \"Publicar\", encontra itens no \"Catálogo\" e demonstra interesse direto pelo anúncio. Cada troca dá nova vida a um produto e evita lixo!" }
+      ]
+    }
+  ]
+}

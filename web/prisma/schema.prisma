@@ -13,6 +13,7 @@ datasource db {
 enum ItemStatus {
   DISPONIVEL
   RESERVADO
+  PAUSADO
   DOADO
 }
 

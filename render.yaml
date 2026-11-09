@@ -1,0 +1,17 @@
+# Blueprint do Render: proxy Node.js do IBM Watson Assistant (chatbot do ReUse)
+services:
+  - type: web
+    name: reuse-watson-proxy
+    runtime: node
+    plan: free
+    rootDir: chatbot/proxy
+    buildCommand: echo "sem dependencias"
+    startCommand: node server.js
+    healthCheckPath: /health
+    envVars:
+      - key: WATSON_API_KEY
+        sync: false
+      - key: WATSON_URL
+        sync: false
+      - key: WATSON_ASSISTANT_ID
+        sync: false

@@ -7,7 +7,7 @@ type ItemCardProps = {
   description: string;
   condition: string;
   tipo: "DOACAO" | "TROCA";
-  status: "DISPONIVEL" | "RESERVADO" | "DOADO";
+  status: "DISPONIVEL" | "RESERVADO" | "PAUSADO" | "DOADO";
   categoryName: string;
   categoryIcon: string;
   categorySlug: string;
@@ -23,12 +23,14 @@ const tipoLabel: Record<ItemCardProps["tipo"], string> = {
 const statusStyle: Record<ItemCardProps["status"], string> = {
   DISPONIVEL: "bg-brand-surface text-brand",
   RESERVADO: "bg-amber-50 text-amber-700",
+  PAUSADO: "bg-slate-100 text-slate-500",
   DOADO: "bg-slate-100 text-slate-500",
 };
 
 const statusLabel: Record<ItemCardProps["status"], string> = {
   DISPONIVEL: "Disponível",
   RESERVADO: "Reservado",
+  PAUSADO: "Pausado",
   DOADO: "Concluído",
 };
 

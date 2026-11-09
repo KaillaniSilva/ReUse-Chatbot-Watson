@@ -12,6 +12,7 @@ const tipoLabel = { DOACAO: "Doação", TROCA: "Troca" } as const;
 const statusLabel = {
   DISPONIVEL: "Disponível",
   RESERVADO: "Reservado",
+  PAUSADO: "Pausado",
   DOADO: "Concluído",
 } as const;
 
