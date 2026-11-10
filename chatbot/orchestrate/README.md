@@ -1,10 +1,28 @@
-# ReUse + IBM watsonx Orchestrate (Web Chat no site Next.js)
+# ReUse + IBM watsonx Orchestrate
+
+## Caminho em uso (agente + ferramentas OpenAPI + chat incorporado)
+
+A conta trial do Orchestrate não tem mais o "AI assistant builder"; o assistente do site é um **agente**:
+
+1. **Criar agente** → nome `ReUse Assistente`; descrição e instruções em `agent-instructions.md`.
+2. **Tools → Adicionar ferramenta → OpenAPI** → `reuse-public-tools.openapi.json` (operações `buscarItensDisponiveis` e `listarCategorias`, sem autenticação — rotas públicas na Vercel).
+3. **Deploy** → Create version → Implantar → aba **Live** → **Embedded agent** → copiar os IDs do script.
+4. IDs na Vercel: `NEXT_PUBLIC_WXO_ORCHESTRATION_ID`, `NEXT_PUBLIC_WXO_HOST_URL`, `NEXT_PUBLIC_WXO_AGENT_ID`, `NEXT_PUBLIC_WXO_AGENT_ENVIRONMENT_ID` → redeploy. Componente: `web/src/components/OrchestrateChat.tsx`.
+5. **Settings → Embed Security**: Security desligado (o agente só lê dados públicos) e `https://reuse-web-ten.vercel.app` em *Allowed origins*.
+
+Produção: https://reuse-web-ten.vercel.app
+
+---
+
+## Referência: fluxo com Web Chat seguro + Actions (guia original, watsonx Assistant clássico)
+
+As rotas `/api/assistant/*` e o OpenAPI `reuse-assistant-extension.openapi.json` continuam no código para esse cenário (consultar/pausar/reativar anúncios do usuário logado, com JWT). Não estão em uso no deploy atual.
+
 
 Fluxo: **Web Chat** → **Action** → **extensão OpenAPI** → **API Next.js na Vercel** → **Postgres** → resposta no chat.
 
 | Arquivo | Função |
 |---|---|
-| `web/src/components/WatsonAssistantChat.tsx` | carrega o Web Chat, envia o JWT de identidade e as variáveis públicas |
 | `web/src/app/api/assistant/session/route.ts` | gera o JWT (RS256) com o action token criptografado no payload privado |
 | `web/src/app/api/assistant/actions/items/*` | `summary` (GET), `pause` e `reactivate` (POST) |
 | `web/src/lib/assistant.ts` | tokens, validação de headers e assinatura |
