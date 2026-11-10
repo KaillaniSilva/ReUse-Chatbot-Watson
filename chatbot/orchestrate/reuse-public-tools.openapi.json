@@ -1,0 +1,106 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "ReUse Catalogo",
+    "version": "1.0.0",
+    "description": "API pública da plataforma ReUse (doação e troca de itens usados). Usada como ferramenta pelo agente do watsonx Orchestrate."
+  },
+  "servers": [{ "url": "https://reuse-web-ten.vercel.app" }],
+  "paths": {
+    "/api/itens": {
+      "get": {
+        "operationId": "buscarItensDisponiveis",
+        "summary": "Buscar itens disponíveis no catálogo do ReUse",
+        "description": "Lista os itens disponíveis para doação ou troca. Use 'busca' para procurar por palavra no título ou descrição e 'categoria' para filtrar pelo slug de uma categoria (obtido em listarCategorias).",
+        "parameters": [
+          {
+            "name": "busca",
+            "in": "query",
+            "required": false,
+            "description": "Palavra ou trecho para procurar no título ou na descrição do item. Ex.: livro, sofá, bicicleta.",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "categoria",
+            "in": "query",
+            "required": false,
+            "description": "Slug da categoria, exatamente como retornado por listarCategorias.",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Itens encontrados",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "total": { "type": "integer", "description": "Quantidade de itens encontrados" },
+                    "itens": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": { "type": "string" },
+                          "title": { "type": "string", "description": "Título do item" },
+                          "description": { "type": "string" },
+                          "condition": { "type": "string", "description": "Estado de conservação" },
+                          "tipo": { "type": "string", "enum": ["DOACAO", "TROCA"] },
+                          "status": { "type": "string" },
+                          "category": {
+                            "type": "object",
+                            "properties": {
+                              "name": { "type": "string" },
+                              "slug": { "type": "string" },
+                              "icon": { "type": "string" }
+                            }
+                          },
+                          "owner": {
+                            "type": "object",
+                            "properties": {
+                              "name": { "type": "string" },
+                              "city": { "type": "string" }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/categorias": {
+      "get": {
+        "operationId": "listarCategorias",
+        "summary": "Listar categorias do ReUse",
+        "description": "Retorna as categorias de itens e quantos itens disponíveis cada uma tem.",
+        "responses": {
+          "200": {
+            "description": "Categorias",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": { "type": "string" },
+                      "slug": { "type": "string" },
+                      "icon": { "type": "string" },
+                      "itensDisponiveis": { "type": "integer" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
